@@ -39,15 +39,14 @@ async function initDatabase() {
     // Hasher et mettre à jour les mots de passe
     const hashedPassword = await bcrypt.hash('admin123', 10);
     await connection.query(
-      `UPDATE archives_db.users SET mot_de_passe = ? WHERE email IN (?, ?, ?)`,
-      [hashedPassword, 'superadmin@archives.dz', 'admin.opa@archives.dz', 'admin.depeche@archives.dz']
+      `UPDATE archives_depeche.users SET mot_de_passe = ? WHERE email IN (?, ?)`,
+      [hashedPassword, 'superadmin@archives.dz', 'admin.depeche@archives.dz']
     );
     console.log('✅ Mots de passe initialisés (admin123)');
 
     console.log('\n🎉 Base de données initialisée avec succès !');
     console.log('📧 Comptes créés :');
     console.log('   - superadmin@archives.dz / admin123 (Super Admin)');
-    console.log('   - admin.opa@archives.dz / admin123 (Admin OPA)');
     console.log('   - admin.depeche@archives.dz / admin123 (Admin Dépêche)');
 
   } catch (error) {

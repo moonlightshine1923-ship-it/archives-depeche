@@ -1,183 +1,88 @@
-# 📁 Archives App - Application de Gestion d'Archives
+# Archives Dépêche
 
-Application web professionnelle de gestion d'archives physiques et numériques pour les organisations **OPA** et **Dépêche**.
+Instance indépendante de l’application d’archives, préparée pour la société **Dépêche**. La structure des tables reste identique à l’application d’origine ; cette copie se connecte à la base `archives_depeche`, utilise la charte bleue et le logo fourni de SARL La Dépêche Services.
 
-## 🏗️ Architecture
+Cette version affiche uniquement le nom des boîtes (le code reste interne pour préserver la base), utilise le nom de la boîte dans les emplacements, corrige l’affichage des accents dans les noms de fichiers, et limite la recherche rapide aux dossiers, fichiers, boîtes et salles. La recherche avancée conserve ses filtres.
 
-```
-Organisation → Salle → Armoire → Boîte → Dossier → Fichier
-```
+## Test sur ton ordinateur (`localhost`)
 
-## 🛠️ Stack Technique
+Il faut Node.js 18+ et MySQL/MariaDB accessibles depuis l’ordinateur. La base `archives_depeche` doit exister.
 
-| Composant | Technologie |
-|-----------|-------------|
-| Backend | Node.js + Express |
-| Base de données | MySQL (MariaDB) |
-| Authentification | JWT + bcrypt |
-| Upload | Multer |
-| QR Codes | qrcode |
-| Frontend | HTML + CSS + JavaScript (Vanilla) |
-
-## 📦 Installation
-
-### Prérequis
-- Node.js 18+
-- MySQL / MariaDB
-
-### 1. Installer les dépendances
 ```bash
-cd archives-app
-npm install
-```
-
-### 2. Configurer la base de données
-Éditez le fichier `.env` si nécessaire :
-```
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=root
-DB_PASSWORD=root
-DB_NAME=archives_db
-```
-
-### 3. Initialiser la base de données
-```bash
-npm run init-db
-```
-
-### 4. Démarrer le serveur
-```bash
+cd archives-depeche
+npm ci
+cp .env.example .env
+# Modifier .env : DB_HOST, DB_USER, DB_PASSWORD, DB_NAME=archives_depeche,
+# PORT=3001 et un JWT_SECRET personnel
 npm start
 ```
 
-L'application est accessible sur : **http://localhost:3000**
+Ouvre ensuite `http://localhost:3001`. Pour une base déjà remplie, ne lance pas l’initialiseur (voir l’avertissement ci-dessous).
 
-## 🔐 Comptes par défaut
+## Configuration locale / serveur
 
-| Email | Mot de passe | Rôle | Organisation |
-|-------|-------------|------|-------------|
-| superadmin@archives.dz | admin123 | Super Admin | Toutes |
-| admin.opa@archives.dz | admin123 | Admin OPA | OPA |
-| admin.depeche@archives.dz | admin123 | Admin Dépêche | Dépêche |
-
-## 📋 Fonctionnalités
-
-### 🏛️ Gestion des Archives
-- **Organisations** : OPA et Dépêche
-- **Salles** : Créer, modifier, désactiver, voir capacité
-- **Armoires** : Gérer avec code unique, emplacement physique
-- **Boîtes** : Organiser et déplacer entre armoires
-- **Dossiers** : Référence auto (ARC-2026-XXXXXX), catégories, niveaux de confidentialité
-- **Fichiers** : Upload, multi-upload, versioning, prévisualisation, téléchargement
-
-### 🔍 Recherche
-- Recherche rapide (référence, titre)
-- Recherche avancée (14 critères)
-- Filtres par organisation, catégorie, état, confidentialité
-
-### 📱 QR Codes
-- Génération automatique par dossier
-- Impression avec étiquettes
-- Scan pour accès direct au dossier
-
-### 📋 Emprunts
-- Enregistrement d'emprunts
-- Suivi des retours
-- Alerte de retard
-
-### 🔒 Sécurité
-- Authentification JWT
-- 5 niveaux de rôles (Super Admin → Consultation)
-- 5 niveaux de confidentialité (Public → Très Secret)
-- Isolation par organisation
-- Journal d'audit complet
-
-### 📊 Dashboard
-- Statistiques en temps réel
-- Graphiques par catégorie, état, confidentialité
-- Occupation des salles
-- Derniers documents ajoutés
-
-## 🗂️ Structure du Projet
-
-```
-archives-app/
-├── sql/
-│   ├── schema.sql          # Schéma BDD complet
-│   └── seed.sql            # Données initiales
-├── server/
-│   ├── app.js              # Application Express
-│   ├── config/
-│   │   ├── db.js           # Connexion MySQL
-│   │   └── init-db.js      # Script d'initialisation
-│   ├── middleware/
-│   │   ├── auth.js         # Authentification JWT
-│   │   ├── role.js         # Contrôle des rôles
-│   │   └── upload.js       # Upload de fichiers
-│   ├── routes/
-│   │   ├── auth.js         # Authentification
-│   │   ├── users.js        # Gestion utilisateurs
-│   │   ├── organisations.js
-│   │   ├── salles.js
-│   │   ├── armoires.js
-│   │   ├── boites.js
-│   │   ├── dossiers.js
-│   │   ├── fichiers.js
-│   │   ├── categories.js
-│   │   ├── emprunts.js
-│   │   ├── recherche.js
-│   │   ├── dashboard.js
-│   │   ├── qrcodes.js
-│   │   ├── audit.js
-│   │   └── notifications.js
-│   └── utils/
-│       ├── audit.js        # Journal d'audit
-│       ├── qrcode.js       # Génération QR
-│       └── reference.js    # Génération références
-├── public/
-│   ├── index.html          # SPA principale
-│   ├── css/
-│   │   └── style.css       # Styles CSS
-│   └── js/
-│       ├── api.js          # Client API
-│       └── app.js          # Application frontend
-├── .env                    # Configuration
-└── package.json
-```
-
-## 🗄️ Base de Données
-
-### Tables principales
-- `roles` - Rôles utilisateurs
-- `organisations` - OPA, Dépêche
-- `users` - Utilisateurs
-- `salles` - Salles d'archives
-- `armoires` - Armoires (A01, A02...)
-- `boites` - Boîtes (B001, B002...)
-- `categories` - Catégories de documents
-- `sous_categories` - Sous-catégories
-- `dossiers` - Dossiers archivés
-- `fichiers` - Fichiers numériques
-- `emprunts` - Suivi des emprunts
-- `journal_audit` - Journal d'audit
-- `notifications` - Notifications
-
-### Formats autorisés
-PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, JPG, JPEG, PNG, ZIP
-
-### Niveaux de confidentialité
-Public → Interne → Confidentiel → Secret → Très Secret
-
-## 🚀 Démarrage rapide
+1. Copier `.env.example` vers `.env`.
+2. Renseigner les identifiants MySQL correspondant à la base déjà créée `archives_depeche`, ainsi qu’une clé `JWT_SECRET` longue et unique.
+3. Garder un port distinct de l’instance OPA (exemple : `PORT=3001`).
+4. Installer les dépendances et lancer l’application :
 
 ```bash
-# Installation complète
-cd archives-app
-npm install
-npm run init-db
+npm ci
 npm start
-
-# Ouvrir http://localhost:3000
-# Se connecter avec superadmin@archives.dz / admin123
 ```
+
+L’application écoute sur le port indiqué dans `.env`.
+
+### Base déjà créée
+
+Cette copie vise la base existante `archives_depeche`. **Ne lancez pas `npm run init-db` si elle contient déjà des données** : le schéma exécute des `DROP TABLE` et recrée les tables. Cette commande est uniquement réservée à une base vide/de test.
+
+Si vous devez initialiser une base vide, vérifiez d’abord les comptes et données d’amorçage présents dans `sql/seed.sql`, puis lancez `npm run init-db`.
+
+## Déploiement côte à côte sur le même serveur (VPS Linux + PM2 + Nginx)
+
+La version OPA reste dans son dossier et conserve son propre port, sa base et ses uploads. Déployer cette copie dans un autre dossier, par exemple `/var/www/archives-depeche`.
+
+```bash
+cd /var/www/archives-depeche
+cp .env.example .env
+nano .env                 # renseigner DB_PASSWORD et JWT_SECRET
+npm ci
+node server/app.js        # test ; arrêter avec Ctrl+C après vérification
+```
+
+Pour le lancement persistant, utilisez PM2 depuis le dossier du projet :
+
+```bash
+npm install -g pm2        # seulement si PM2 n’est pas déjà installé
+pm2 start server/app.js --name archives-depeche
+pm2 save
+pm2 startup               # exécuter ensuite la commande système affichée par PM2
+```
+
+Associer ensuite un sous-domaine dédié (ex. `archives-depeche.votre-domaine.dz`) à un bloc Nginx qui relaie vers `127.0.0.1:3001` :
+
+```nginx
+server {
+    listen 80;
+    server_name archives-depeche.votre-domaine.dz;
+
+    location / {
+        proxy_pass http://127.0.0.1:3001;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+Puis tester et recharger Nginx (`sudo nginx -t && sudo systemctl reload nginx`) et activer HTTPS avec Certbot si disponible. Les fichiers téléversés sont dans le dossier propre à cette copie (`public/uploads/`) : sauvegardez-le séparément de celui d’OPA.
+
+## Points à vérifier
+
+- `.env` utilise `DB_NAME=archives_depeche` et le compte MySQL a les droits sur cette base.
+- Le port 3001 n’est pas déjà utilisé.
+- Les pièces jointes et sauvegardes de Dépêche restent séparées des fichiers d’OPA.
+- Consultez les logs en cas de souci : `pm2 logs archives-depeche`.

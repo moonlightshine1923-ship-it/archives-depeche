@@ -1000,207 +1000,29 @@ table .actions {
   .content { padding: 16px; }
 }
 
-
-/* ===== IDENTITÉ VISUELLE — ARCHIVES OPA ===== */
-:root {
-  --primary: #006b68;
-  --primary-light: #168983;
-  --primary-dark: #003f43;
-  --secondary: #617173;
-  --success: #167650;
-  --warning: #c47a18;
-  --danger: #b8433d;
-  --info: #167f91;
-  --dark: #142b2f;
-  --light: #eef3f1;
-  --white: #ffffff;
-  --border: #d9e4e0;
-  --bg: #f5f7f4;
-  --shadow: 0 3px 12px rgba(20, 43, 47, .08);
-  --shadow-lg: 0 20px 50px rgba(20, 43, 47, .18);
-  --radius: 10px;
-}
-body { font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif; letter-spacing: -.01em; }
-h1, h2, h3, .login-box .logo h1 { letter-spacing: -.035em; }
-.login-container { background: radial-gradient(circle at 12% 18%, rgba(32, 158, 146, .36), transparent 31%), linear-gradient(125deg, #002f35, #006b68 58%, #0e5964); }
-.login-box { border: 1px solid rgba(255,255,255,.6); border-top: 5px solid #d49a3a; }
-.login-box .logo h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: 2.25rem; color: var(--primary-dark); }
-.login-box .logo h1 em { color: #c88124; font-style: normal; }
-.login-box .logo .icon { filter: saturate(.7); }
-.sidebar { background: linear-gradient(180deg, #082d32 0%, #102428 100%); border-right: 1px solid rgba(255,255,255,.08); }
-.sidebar-header { padding: 25px 22px 21px; border-bottom: 1px solid rgba(255,255,255,.1); }
-.sidebar-header h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.55rem; }
-.sidebar-header h2 span { color: #d79a38; }
-.sidebar .nav-item { margin: 3px 12px; border-radius: 8px; }
-.sidebar .nav-item.active, .sidebar .nav-item:hover { background: rgba(42, 169, 158, .18); color: #fff; }
-.sidebar .nav-item.active { box-shadow: inset 3px 0 0 #d79a38; }
-.header { background: rgba(255,255,255,.94); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); }
-.header h1 { font-family: 'DM Serif Display', Georgia, serif; color: var(--primary-dark); font-size: 1.8rem; }
-.card { border: 1px solid var(--border); box-shadow: var(--shadow); }
-.btn-primary { background: var(--primary); box-shadow: 0 3px 8px rgba(0,107,104,.18); }
-.btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
-thead { background: #eaf2f0; color: var(--primary-dark); }
-.category-roman { display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center; border-radius: 50%; background: #e2efeb; color: var(--primary-dark); font-family: 'DM Serif Display', Georgia, serif; font-size: 1.05rem; }
-.file-number { display: inline-flex; align-items: center; justify-content: center; min-width: 35px; height: 28px; padding: 0 7px; margin-right: 9px; border-radius: 5px; background: #f6ead7; color: #8b5617; font-weight: 800; font-size: 12px; letter-spacing: .04em; }
-
+/* ===== DÉTAILS DES FICHIERS ET DE LA HIÉRARCHIE ===== */
 .file-info-clickable { cursor: pointer; border-radius: 6px; padding: 4px 6px; margin: -4px -6px; }
-.file-info-clickable:hover { background: #edf5f2; }
+.file-info-clickable:hover { background: #eff6ff; }
 .file-details { display: grid; gap: 10px; }
 .detail-row { display: flex; justify-content: space-between; gap: 18px; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
 .detail-row span, .detail-block span { color: var(--secondary); }
 .detail-block { padding-top: 6px; font-size: 13px; }
 .detail-block p { margin-top: 3px; white-space: pre-wrap; }
-.hierarchie-fichier {
-  border-left: 4px solid var(--primary);
-  background: #f1f8f6;
-  border-radius: 8px;
-  padding: 14px;
-  margin-bottom: 18px;
-  line-height: 2;
-}
+.hierarchie-fichier { border-left: 4px solid var(--primary); background: #eef7fc; border-radius: 8px; padding: 14px; margin-bottom: 18px; line-height: 2; }
+.niveau-categorie { display: inline-block; color: #1d587d; font-weight: 800; margin-right: 12px; }
+.niveau-dossier { display: inline-block; color: #326b9b; font-weight: 700; margin-right: 12px; }
+.niveau-fichier { display: inline-block; color: #2878a8; font-weight: 700; }
+.emplacement-fichier { color: #66788a; font-size: 13px; border-top: 1px solid #d9e5ec; margin-top: 8px; padding-top: 8px; }
+.details-fichier p { margin: 10px 0; font-size: 14px; }
 
-.niveau-categorie {
-  display: inline-block;
-  color: #075e54;
-  font-weight: 800;
-  margin-right: 12px;
-}
-
-.niveau-dossier {
-  display: inline-block;
-  color: #1d4f91;
-  font-weight: 700;
-  margin-right: 12px;
-}
-
-.niveau-fichier {
-  display: inline-block;
-  color: #8a5517;
-  font-weight: 700;
-}
-
-.emplacement-fichier {
-  color: #52656a;
-  font-size: 13px;
-  border-top: 1px solid #d6e5e1;
-  margin-top: 8px;
-  padding-top: 8px;
-}
-
-.details-fichier p {
-  margin: 10px 0;
-  font-size: 14px;
-}
-
-/* ===== THÈME OR, NOIR ET BLANC — ARCHIVES OPA ===== */
-
-:root {
-  --primary: #b88720;
-  --primary-light: #d5a63c;
-  --primary-dark: #76530d;
-
-  --secondary: #65615a;
-  --dark: #171717;
-  --light: #f5f2ea;
-  --white: #ffffff;
-
-  --border: #ded7c8;
-  --bg: #f8f7f3;
-
-  --shadow: 0 4px 16px rgba(23, 23, 23, 0.10);
-  --shadow-lg: 0 22px 52px rgba(0, 0, 0, 0.24);
-}
-
-body {
-  background: var(--bg);
-  color: #1d1d1d;
-}
-
-.login-container {
-  background:
-    radial-gradient(circle at 15% 15%, rgba(206, 161, 55, 0.28), transparent 32%),
-    linear-gradient(135deg, #080808 0%, #25221c 58%, #6e5013 150%);
-}
-
-.login-box {
-  border-top-color: #c9992d;
-}
-
-.login-box .logo h1 {
-  color: #151515;
-}
-
-.login-box .logo h1 em,
-.sidebar-header h2 span {
-  color: #d5a63c;
-}
-
-.sidebar {
-  background: linear-gradient(180deg, #0b0b0b 0%, #202020 100%);
-}
-
-.sidebar .nav-item.active,
-.sidebar .nav-item:hover {
-  background: rgba(213, 166, 60, 0.15);
-}
-
-.sidebar .nav-item.active {
-  box-shadow: inset 3px 0 0 #d5a63c;
-}
-
-.header h1 {
-  color: #191919;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, #c99a2f, #a97817);
-  box-shadow: 0 3px 9px rgba(169, 120, 23, 0.25);
-}
-
-.btn-primary:hover {
-  background: #76530d;
-}
-
-thead {
-  background: #f0eadc;
-  color: #392a0a;
-}
-
-.category-roman {
-  background: #f4e9cd;
-  color: #76530d;
-}
-
-.file-number {
-  background: #f4e5c3;
-  color: #76530d;
-}
-
-.hierarchie-fichier {
-  border-left-color: #b88720;
-  background: #fbf7ec;
-}
-
-.niveau-categorie {
-  color: #76530d;
-}
-
-.niveau-dossier {
-  color: #222222;
-}
-
-.niveau-fichier {
-  color: #a06f14;
-}
-
-.emplacement-fichier {
-  color: #514b42;
-  border-top-color: #ded7c8;
-}
-/* =====================================================
-   THÈME CLAIR — ARCHIVES OPA
-   Remplace le thème sombre par une interface claire et douce.
-   ===================================================== */
+/* ===== CHARTE BLEUE — ARCHIVES DÉPÊCHE ===== */
+body { font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif; letter-spacing: -.01em; }
+h1, h2, h3, .login-box .logo h1 { letter-spacing: -.035em; }
+.login-box .logo h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: 2.25rem; }
+.sidebar-header h2 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.55rem; }
+.header h1 { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.8rem; }
+.category-roman { display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center; border-radius: 50%; background: #e5f3fa; color: #1d587d; font-family: 'DM Serif Display', Georgia, serif; font-size: 1.05rem; }
+.file-number { display: inline-flex; align-items: center; justify-content: center; min-width: 35px; height: 28px; padding: 0 7px; margin-right: 9px; border-radius: 5px; background: #e5f3fa; color: #1d587d; font-weight: 800; font-size: 12px; letter-spacing: .04em; }
 :root {
   --primary: #2878a8;
   --primary-light: #4ba3d3;
@@ -1219,17 +1041,14 @@ thead {
   --shadow-lg: 0 18px 45px rgba(37, 75, 101, .16);
   --radius: 12px;
 }
-
 body { background: var(--bg); color: var(--dark); }
-
 .login-container {
   background: radial-gradient(circle at 12% 12%, rgba(117, 194, 225, .32), transparent 32%),
               linear-gradient(135deg, #eaf5fa 0%, #d9edf5 52%, #b9ddea 100%);
 }
 .login-box { border: 1px solid #d4e5ed; border-top: 5px solid var(--primary); }
 .login-box .logo h1 { color: var(--primary-dark); }
-.login-box .logo h1 em { color: var(--primary); }
-
+.login-box .logo h1 em { color: var(--primary); font-style: normal; }
 .sidebar {
   background: #ffffff;
   color: var(--dark);
@@ -1243,30 +1062,23 @@ body { background: var(--bg); color: var(--dark); }
 .sidebar-nav .nav-section { color: var(--secondary); opacity: .8; }
 .sidebar-nav .nav-item { color: #607487; }
 .sidebar-nav .nav-item:hover { background: #eef7fb; color: var(--primary-dark); }
-.sidebar-nav .nav-item.active {
-  background: #e5f3fa;
-  color: var(--primary-dark);
-  border-left-color: var(--primary);
-}
+.sidebar-nav .nav-item.active { background: #e5f3fa; color: var(--primary-dark); border-left-color: var(--primary); }
 .sidebar-footer { border-top: 1px solid var(--border); }
 .sidebar-footer .user-name { color: var(--dark); }
 .sidebar-footer .user-role { color: var(--secondary); opacity: 1; }
 .sidebar-footer .user-avatar { background: var(--primary); color: white; }
 .sidebar-footer button { color: var(--secondary) !important; }
-
 .header { background: rgba(255,255,255,.96); }
-.header-left h1 { color: var(--dark); }
+.header-left h1, .header h1 { color: var(--dark); }
 .header-search input { background: var(--light); }
 .card, .stat-card, .filters-bar, .file-item, .explorer-item { box-shadow: var(--shadow); }
 .card-footer { background: #f5f9fb; }
 table th { background: #eaf4f8; color: var(--primary-dark); }
 table tr:hover td { background: #f2f9fc; }
-
 .btn-primary { background: var(--primary); box-shadow: 0 4px 10px rgba(40,120,168,.2); }
 .btn-primary:hover { background: var(--primary-dark); }
 .btn-outline { color: var(--dark); }
 .btn-outline:hover { background: #edf6fa; }
-
 .modal-overlay { background: rgba(30, 55, 70, .38); }
 .modal-close { background: var(--light); }
 .dropzone { background: #f5fafc; }
@@ -1275,16 +1087,13 @@ table tr:hover td { background: #f2f9fc; }
 .hierarchie-fichier { background: #eef8fb; border-left-color: var(--primary); }
 .niveau-categorie { color: var(--primary-dark); }
 .niveau-dossier { color: #326b9b; }
-.niveau-fichier { color: #ad741d; }
+.niveau-fichier { color: #2878a8; }
 .emplacement-fichier { color: var(--secondary); border-top-color: var(--border); }
-
 @media (max-width: 768px) {
   .sidebar { box-shadow: 8px 0 22px rgba(37,75,101,.15); }
 }
 
-
-/* Interface mono-organisation : OPA uniquement.
-   organisation_id reste conservé en base pour compatibilité. */
+/* Instance dédiée à une seule organisation : Dépêche. */
 .form-group:has(#salleOrganisation),
 .form-group:has(#dossOrg),
 .form-group:has(#catOrg),
@@ -1292,60 +1101,65 @@ table tr:hover td { background: #f2f9fc; }
 .form-group:has(#srcOrg) { display: none !important; }
 #salleOrganisation, #dossOrg, #catOrg, #userOrg, #srcOrg { display: none !important; }
 
-
 /* ===== CHAMP MOT DE PASSE — afficher / masquer ===== */
-.password-field {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
+.password-field { position: relative; display: flex; align-items: center; }
 .password-field input[type="password"],
-.password-field input[type="text"] {
-  padding-right: 46px;
-}
-
+.password-field input[type="text"] { padding-right: 46px; }
 .password-toggle {
-  position: absolute;
-  top: 50%;
-  right: 6px;
-  transform: translateY(-50%);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  padding: 0;
-  border: none;
-  border-radius: calc(var(--radius) - 3px);
-  background: transparent;
-  color: var(--secondary);
-  cursor: pointer;
-  transition: var(--transition);
+  position: absolute; top: 50%; right: 6px; transform: translateY(-50%);
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; padding: 0; border: none;
+  border-radius: calc(var(--radius) - 3px); background: transparent;
+  color: var(--secondary); cursor: pointer; transition: var(--transition);
 }
-
-.password-toggle:hover {
-  background: var(--light);
-  color: var(--primary);
-}
-
-.password-toggle:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 1px;
-}
-
-.password-toggle svg {
-  width: 18px;
-  height: 18px;
-  pointer-events: none;
-}
-
+.password-toggle:hover { background: var(--light); color: var(--primary); }
+.password-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+.password-toggle svg { width: 18px; height: 18px; pointer-events: none; }
 .password-toggle .icon-eye-off { display: none; }
-
 .password-toggle.is-visible { color: var(--primary); }
 .password-toggle.is-visible .icon-eye { display: none; }
 .password-toggle.is-visible .icon-eye-off { display: block; }
-
-/* Évite le double œil : masque l'icône native "reveal" d'Edge/IE */
 .password-field input::-ms-reveal,
 .password-field input::-ms-clear { display: none; }
+
+
+/* Résultats de recherche rapide */
+.quick-search-result { cursor: pointer; }
+.quick-search-result:hover td { background: #f2f9fc; }
+
+
+/* Logo fourni pour SARL La Dépêche Services */
+.login-box .logo .logo-img {
+  display: block;
+  width: 190px;
+  max-width: 100%;
+  height: 160px;
+  margin: 0 auto 12px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 8px;
+}
+.sidebar-header {
+  padding: 14px 12px;
+  gap: 8px;
+}
+.sidebar-header .sidebar-logo {
+  display: block;
+  width: 84px;
+  height: 72px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 6px;
+}
+.sidebar-header h2 {
+  font-size: 1.05rem;
+  line-height: 1.18;
+  overflow-wrap: anywhere;
+}
+.sidebar-header small {
+  color: var(--secondary);
+  opacity: 1;
+  font-size: 10px;
+  line-height: 1.25;
+}

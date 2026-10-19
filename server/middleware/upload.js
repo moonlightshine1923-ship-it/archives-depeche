@@ -2,6 +2,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
+const fixMojibake = require('../utils/encoding');
 
 const UPLOAD_DIR = path.join(__dirname, '../../public/uploads');
 
@@ -31,6 +32,7 @@ const storage = multer.diskStorage({
 
 // Filtre des extensions
 const fileFilter = (req, file, cb) => {
+  file.originalname = fixMojibake(file.originalname);
   const ext = path.extname(file.originalname).toLowerCase().replace('.', '');
   if (ALLOWED_EXTENSIONS.includes(ext)) {
     cb(null, true);

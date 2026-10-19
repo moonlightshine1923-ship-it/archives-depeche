@@ -1,7 +1,7 @@
 {
-  "name": "archives-app",
+  "name": "archives-depeche",
   "version": "1.0.0",
-  "description": "Application de gestion d'archives physiques et numériques",
+  "description": "Application de gestion des archives de la société Dépêche",
   "main": "server/app.js",
   "scripts": {
     "start": "node server/app.js",

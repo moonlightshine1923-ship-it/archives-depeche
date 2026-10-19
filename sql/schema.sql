@@ -2,8 +2,8 @@
 -- ARCHIVES APP - Schéma de base de données MySQL
 -- =====================================================
 
-CREATE DATABASE IF NOT EXISTS archives_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE archives_db;
+CREATE DATABASE IF NOT EXISTS archives_depeche CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE archives_depeche;
 
 -- =====================================================
 -- TABLES
@@ -245,15 +245,13 @@ CREATE INDEX idx_souscat_cat ON sous_categories(categorie_id);
 -- DONNÉES INITIALES
 -- =====================================================
 
--- Rôles
+-- Rôles initiaux pour l’instance Dépêche
 INSERT INTO `roles` (`nom`, `description`, `niveau`) VALUES
 ('Super Admin', 'Accès total au système', 100),
-('Admin OPA', 'Administrateur organisation OPA', 80),
-('Admin Dépêche', 'Administrateur organisation Dépêche', 80),
+('Admin Dépêche', 'Administrateur de l’organisation Dépêche', 80),
 ('Archiviste', 'Gestion des archives et fichiers', 50),
 ('Consultation', 'Lecture uniquement', 20);
 
--- Organisations
+-- Organisation initiale de cette instance
 INSERT INTO `organisations` (`nom`, `code`, `description`) VALUES
-('OPA', 'OPA', 'Organisation OPA'),
 ('Dépêche', 'DEPECHE', 'Organisation Dépêche');

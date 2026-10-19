@@ -106,8 +106,9 @@ router.post('/', auth, roleCheck(80), async (req, res) => {
          WHERE b.id = ?`,
         [boite_id]
       );
-      organisation_id = rows[0] ? rows[0].organisation_id : 1;
+      organisation_id = rows[0] ? rows[0].organisation_id : null;
     }
+    if (!organisation_id) return res.status(400).json({ error: 'Organisation introuvable pour cette boîte.' });
 
     const reference = await generateReference();
     const [result] = await db.query(
